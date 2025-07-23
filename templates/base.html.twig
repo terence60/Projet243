@@ -12,6 +12,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 
      <style>
+     
     .title{
       text-align: center;
       font-weight: bold;
@@ -45,6 +46,7 @@
     object-fit: cover;
      }
 
+    
 
      </style>
      {% block stylesheets %}{% endblock %}
@@ -54,7 +56,7 @@
 
      {# Titre #}
     <div class="title">BLOG D'INFORMATION SUR LE CONGO</div>
-
+    
      {# Drapeau #}
       <img src="{{asset('images/drapeau.png')}}" alt="rdc" srcset="">
 
@@ -75,9 +77,47 @@
 
       {# contenu principal #}
 
-      <div class="container my-5">
-      {% block body %}{% endblock %}
+   <div class="container my-5">
+  <div class="row justify-content-center text-center">
+
+     {# 1er guerre #}
+    <div class="col-md-4 mb-4">
+      <img src="{{ asset('images/1erguerre.jpg') }}" alt="1ère guerre" class="img-fluid" style="width: 100%; max-width: 400px;">
+      <p>
+        <a class="text-dark text-decoration-none" href="#">
+          La Première Guerre du Congo<br>(Novembre 1996 - Mai 1997)
+        </a>
+      </p>
     </div>
+
+    {# 2éme guerre #}
+    <div class="col-md-4 mb-4">
+      <img src="{{ asset('images/2éme.jpg') }}" alt="2ème guerre" class="img-fluid" style="width: 100%; max-width: 400px;">
+      <p>
+        <a class="text-dark text-decoration-none" href="#">
+          La Deuxième Guerre du Congo<br>(Août 1998 - Juin 2003)
+        </a>
+      </p>
+    </div>
+
+    {# 3éme guerre #}
+    <div class="col-md-4 mb-4">
+      <img src="{{ asset('images/3éme.jpg') }}" alt="3ème guerre" class="img-fluid" style="width: 100%; max-width: 400px;">
+      <p>
+        <a class="text-dark text-decoration-none" href="#">
+          Guerre du Kivu<br>(2004 - Présent)
+        </a>
+      </p>
+    </div>
+
+  </div>
+</div>
+ {% block body %}{% endblock %}
+
+    
+
+
+    
 
  {# bootstrap js#}
 
@@ -96,10 +136,10 @@
                 <div class="col"><a href="">Mentions Légales</a></div>
                 <div class="col"><a href="">Tous droits réservés © 2025</a></div>
             </div>
-            <div>
-                <a href="https://www.instagram.com/terence_off/"><img src="icones/instagram.png" alt="Instagram"></a>
-                <a href="https://x.com/Terence93243"><img src="icones/twitter.png" alt="Twitter"></a>
-                <a href="https://www.facebook.com/profile.php?id=100005794530817&locale=fr_FR"><img src="icones/facebook.png" alt="Facebook"></a>
+            <div style="max-width: 100px d-flex align-items-center">
+                <a href="https://www.instagram.com/terence_off/"><img src="icones/instagram.png" alt="Instagram"  style ="width:30px; height:30px;"></a>
+                <a href="https://x.com/Terence93243"><img src="icones/twitter.png" alt="Twitter" style ="width:30px; height:30px;"></a>
+                <a href="https://www.facebook.com/profile.php?id=100005794530817&locale=fr_FR"><img src="icones/facebook.png" alt="Facebook" style ="width:30px; height:30px;"></a>
             </div>
         </div>
     </footer>
