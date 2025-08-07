@@ -3,5 +3,25 @@
 {% block title %}DeuxiémeGuerre{% endblock %}
 
 {% block body %}
+<style>
+.titre{
+ text-align: center;
+ text-shadow: 2px 2px 5px black;
+ font-size: 150%;
+
+}
+.texte{
+    font-size: 110%;
+    text-align: center;
+}
+
+</style>
+<div class="titre">La Deuxiéme Guerre du Congo<br>(Aoùt 1998 - Juin 2003)</div>
+<p class="texte">La Deuxième Guerre du Congo a eu lieu entre 1998 et 2003 en République démocratique du Congo (RDC). Elle a commencé quand le président Laurent-Désiré Kabila, arrivé au pouvoir en 1997 avec l’aide du Rwanda et de l’Ouganda, a rompu ses relations avec ces pays. En réaction, ils ont soutenu deux rébellions armées contre lui : le RCD et le MLC. La guerre a rapidement pris une dimension régionale, impliquant neuf pays africains et des dizaines de groupes armés.
+
+Le conflit a été marqué par des combats violents, des massacres de civils, des viols massifs, et une crise humanitaire majeure. En 2001, Laurent Kabila est assassiné et son fils Joseph Kabila prend le pouvoir. Il engage alors des négociations de paix, qui aboutissent progressivement à des accords entre 2002 et 2003, mettant officiellement fin à la guerre.
+
+Cette guerre a causé entre 5 et 6 millions de morts, en grande partie à cause des maladies, famines et déplacements forcés. Même après la fin du conflit, la violence continue dans l’est de la RDC, notamment <a href="{{path('app_kivu')}}">dans les provinces du Kivu </a>.</p>
+
 
 {% endblock %}
