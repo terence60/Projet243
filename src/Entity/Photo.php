@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\PhotoRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PhotoRepository::class)]
@@ -15,45 +13,27 @@ class Photo
     #[ORM\Column]
     private ?int $id = null;
 
-    /**
-     * @var Collection<int, Actualites>
-     */
-    #[ORM\ManyToMany(targetEntity: Actualites::class, mappedBy: 'photo')]
-    private Collection $actualites;
-
-    public function __construct()
-    {
-        $this->actualites = new ArrayCollection();
-    }
+    #[ORM\OneToOne(mappedBy: 'photo', cascade: ['persist', 'remove'])]
+    private ?Actualites $actualites = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return Collection<int, Actualites>
-     */
-    public function getActualites(): Collection
+    public function getActualites(): ?Actualites
     {
         return $this->actualites;
     }
 
-    public function addActualite(Actualites $actualite): static
+    public function setActualites(Actualites $actualites): static
     {
-        if (!$this->actualites->contains($actualite)) {
-            $this->actualites->add($actualite);
-            $actualite->addPhoto($this);
+        // set the owning side of the relation if necessary
+        if ($actualites->getPhoto() !== $this) {
+            $actualites->setPhoto($this);
         }
 
-        return $this;
-    }
-
-    public function removeActualite(Actualites $actualite): static
-    {
-        if ($this->actualites->removeElement($actualite)) {
-            $actualite->removePhoto($this);
-        }
+        $this->actualites = $actualites;
 
         return $this;
     }

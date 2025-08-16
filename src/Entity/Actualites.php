@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ActualitesRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,23 +20,13 @@ class Actualites
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    /**
-     * @var Collection<int, Categorie>
-     */
-    #[ORM\ManyToMany(targetEntity: Categorie::class, inversedBy: 'actualites')]
-    private Collection $categorie;
+    #[ORM\ManyToOne(inversedBy: 'actualites')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
 
-    /**
-     * @var Collection<int, Photo>
-     */
-    #[ORM\ManyToMany(targetEntity: Photo::class, inversedBy: 'actualites')]
-    private Collection $photo;
-
-    public function __construct()
-    {
-        $this->categorie = new ArrayCollection();
-        $this->photo = new ArrayCollection();
-    }
+    #[ORM\OneToOne(inversedBy: 'actualites', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Photo $photo = null;
 
     public function getId(): ?int
     {
@@ -69,50 +57,26 @@ class Actualites
         return $this;
     }
 
-    /**
-     * @return Collection<int, Categorie>
-     */
-    public function getCategorie(): Collection
+    public function getCategorie(): ?Categorie
     {
         return $this->categorie;
     }
 
-    public function addCategorie(Categorie $categorie): static
+    public function setCategorie(?Categorie $categorie): static
     {
-        if (!$this->categorie->contains($categorie)) {
-            $this->categorie->add($categorie);
-        }
+        $this->categorie = $categorie;
 
         return $this;
     }
 
-    public function removeCategorie(Categorie $categorie): static
-    {
-        $this->categorie->removeElement($categorie);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Photo>
-     */
-    public function getPhoto(): Collection
+    public function getPhoto(): ?Photo
     {
         return $this->photo;
     }
 
-    public function addPhoto(Photo $photo): static
+    public function setPhoto(Photo $photo): static
     {
-        if (!$this->photo->contains($photo)) {
-            $this->photo->add($photo);
-        }
-
-        return $this;
-    }
-
-    public function removePhoto(Photo $photo): static
-    {
-        $this->photo->removeElement($photo);
+        $this->photo = $photo;
 
         return $this;
     }

@@ -21,7 +21,7 @@ class Categorie
     /**
      * @var Collection<int, Actualites>
      */
-    #[ORM\ManyToMany(targetEntity: Actualites::class, mappedBy: 'categorie')]
+    #[ORM\OneToMany(targetEntity: Actualites::class, mappedBy: 'categorie')]
     private Collection $actualites;
 
     public function __construct()
@@ -58,7 +58,7 @@ class Categorie
     {
         if (!$this->actualites->contains($actualite)) {
             $this->actualites->add($actualite);
-            $actualite->addCategorie($this);
+            $actualite->setCategorie($this);
         }
 
         return $this;
@@ -67,7 +67,10 @@ class Categorie
     public function removeActualite(Actualites $actualite): static
     {
         if ($this->actualites->removeElement($actualite)) {
-            $actualite->removeCategorie($this);
+            // set the owning side to null (unless already changed)
+            if ($actualite->getCategorie() === $this) {
+                $actualite->setCategorie(null);
+            }
         }
 
         return $this;
