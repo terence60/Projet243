@@ -8,16 +8,30 @@
     {% endfor %}
 
     <h1>Inscription</h1>
+    <style>
+    h1{
+        text-align:center
+    }
+    
+    </style>
 
     {{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
+    {{ form_start(registrationForm, {'attr' : { 'class':'text-center'}}) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            label: 'Mot de passe'
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+       <div>
+    {{ form_widget(registrationForm.agreeTerms) }}
+    {{ form_label(registrationForm.agreeTerms, 'J\'accepte les <a href="' ~ path('app_c_g_u') ~ '" target="_blank">conditions générales du site</a>', {
+        'label_html': true
+        
+    }) }}
+    {{ form_errors(registrationForm.agreeTerms) }}
+</div>
 
-        <button type="submit" class="btn btn-lg btn-primary">Inscription</button>
+
+        <button type="submit" class="btn btn-lg btn-dark">Inscription</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

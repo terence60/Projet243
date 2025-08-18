@@ -7,8 +7,15 @@
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
     <h1>Réinitialisez votre mot de passe</h1>
+    <style>
+    h1{
+        text-align:center;
+    }
+    
+    </style>
 
-    {{ form_start(requestForm) }}
+
+    {{ form_start(requestForm , {'attr' : { 'class':'text-center'}}) }}
         {{ form_row(requestForm.email) }}
         <div>
             <small>
@@ -16,6 +23,6 @@
             </small>
         </div>
 
-        <button class="btn btn-primary">envoyer un e-mail de réinitialisation du mot de passe</button>
+        <button class="btn btn-dark">envoyer un e-mail de réinitialisation du mot de passe</button>
     {{ form_end(requestForm) }}
 {% endblock %}
