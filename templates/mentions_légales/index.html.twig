@@ -3,4 +3,70 @@
 {% block title %}MentionsLégales{% endblock %}
 
 {% block body %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mentions Légales</title>
+</head>
+<style>
+h1{
+    text-align:center;
+}
+h2{
+    text-align:center;
+}
+
+p{
+    text-align:center;
+}
+
+
+</style>
+<body>
+  <h1>Mentions Légales</h1>
+
+  <h2>Éditeur du site</h2>
+  <p>
+    Nom : Terence Dinguilu<br>
+    Adresse : 222 Boulevard Gustave Flaubert, 63000 Clermont-Ferrand,<br>
+    Email : tete@blog.com<br>
+  </p>
+
+  <h2>Hébergement</h2>
+  <p>
+    Hébergeur : Terence Dinguilu<br>
+    Adresse : 222 Boulevard Gustave Flaubert, 63000 Clermont-Ferrand, France<br>
+    Téléphone : 04 44 44 60 40<br>
+  </p>
+
+  <h2>Propriété intellectuelle</h2>
+  <p>
+    Les contenus (textes, images, vidéos, etc.) publiés sur ce blog sont la propriété exclusive de Terence Dinguilu, sauf mention contraire. 
+    Toute reproduction, diffusion ou utilisation sans autorisation écrite préalable est interdite.
+  </p>
+
+  <h2>Données personnelles</h2>
+  <p>
+    Ce site peut collecter des données personnelles via <a href="{{path('app_contact')}}">les formulaires de contact </a>, les commentaires, ou l’abonnement à la newsletter.<br>
+    Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d’un droit d’accès, de rectification et de suppression des données vous concernant. 
+    Vous pouvez exercer ces droits en écrivant à : <a href="https://mailtrap.io/">tete@blog.com</a>.<br>
+    Aucune donnée n’est cédée ou vendue à des tiers.
+  </p>
+
+  <h2>Cookies</h2>
+  <p>
+    Ce site utilise des cookies à des fins de mesure d’audience (ex : Google Analytics) et pour améliorer l’expérience utilisateur.<br>
+    Lors de votre première visite, un bandeau vous informe de l’utilisation des cookies et vous propose d’accepter ou refuser leur usage.
+  </p>
+
+  <h2>Limitation de responsabilité</h2>
+  <p>
+    L’auteur ne peut être tenu responsable des erreurs ou omissions dans les contenus publiés, ni des conséquences de leur utilisation.<br>
+    Les liens externes proposés sur ce blog ne relèvent pas de sa responsabilité.
+  </p>
+
+</body>
+</html>
+
 {% endblock %}
