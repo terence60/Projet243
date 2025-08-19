@@ -26,6 +26,11 @@ class ChangePasswordForm extends AbstractType
                     ],
                 ],
                 'first_options' => [
+                'label' => 'Mot de passe',
+                'label_html' => true,
+                 'attr' => [
+                'placeholder' => 'Saisir un mot de passe',
+                    ],
                     'constraints' => [
                         new NotBlank([
                             'message' => 'Veuillez saisir votre mot de passe',
@@ -45,12 +50,31 @@ class ChangePasswordForm extends AbstractType
                     'label' => 'New password',
                 ],
                 'second_options' => [
-                    'label' => 'Repeat Password',
+                    'label' => 'Confirmation du mot de passe',
+                    'label_html' => true,
+                    'attr' => [
+                    'placeholder' => 'Confirmer le mot de passe'
+                    ]
+                    
+                ],
+                 'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez saisir un mot de passe',
+                    ]),
+
+                    new Regex([ 
+                   'pattern' => '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_?.])([-+!*$@%_?.\w]{12,})$/',
+                   'match' => true,
+                   'message' => 'Votre mot de passe doit comporter au moins douze 
+                    caractères, dont des lettres majuscules et minuscules, un chiffre et un symbole : 
+                        - + ! * $ @ % _ ? . '
+                     
+
+                    ])
                 ],
                 'invalid_message' => 'Les mot de passe doivent etre identiques',
-                // Instead of being set onto the object directly,
-                // this is read and encoded in the controller
                 'mapped' => false,
+                'required' => false,
             ])
         ;
     }
