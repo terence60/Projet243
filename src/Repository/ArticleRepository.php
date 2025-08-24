@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\Actualites;
+use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Actualites>
+ * @extends ServiceEntityRepository<Article>
  */
-class ActualitesRepository extends ServiceEntityRepository
+class ArticleRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Actualites::class);
+        parent::__construct($registry, Article::class);
     }
 
     //    /**
-    //     * @return Actualites[] Returns an array of Actualites objects
+    //     * @return Article[] Returns an array of Article objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class ActualitesRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Actualites
+    //    public function findOneBySomeField($value): ?Article
     //    {
     //        return $this->createQueryBuilder('a')
     //            ->andWhere('a.exampleField = :val')

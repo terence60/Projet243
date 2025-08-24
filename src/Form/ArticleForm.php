@@ -2,27 +2,28 @@
 
 namespace App\Form;
 
-use App\Entity\Actualites;
-use App\Entity\Categorie;
-use App\Entity\Photo;
+use App\Entity\Article;
+use App\Entity\Category;
+use App\Entity\Picture;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ActualitesForm extends AbstractType
+class ArticleForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre')
+            ->add('title')
             ->add('description')
-            ->add('categorie', EntityType::class, [
-                'class' => Categorie::class,
-                'choice_label' => 'id',
+            ->add('publishDate')
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'title',
             ])
-            ->add('photo', EntityType::class, [
-                'class' => Photo::class,
+            ->add('picture', EntityType::class, [
+                'class' => Picture::class,
                 'choice_label' => 'id',
             ])
         ;
@@ -31,7 +32,7 @@ class ActualitesForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Actualites::class,
+            'data_class' => Article::class,
         ]);
     }
 }

@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\Photo;
+use App\Entity\Picture;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Photo>
+ * @extends ServiceEntityRepository<Picture>
  */
-class PhotoRepository extends ServiceEntityRepository
+class PictureRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Photo::class);
+        parent::__construct($registry, Picture::class);
     }
 
     //    /**
-    //     * @return Photo[] Returns an array of Photo objects
+    //     * @return Picture[] Returns an array of Picture objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class PhotoRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Photo
+    //    public function findOneBySomeField($value): ?Picture
     //    {
     //        return $this->createQueryBuilder('p')
     //            ->andWhere('p.exampleField = :val')
