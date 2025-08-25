@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}Page de contact{% endblock %}
 
 {% block body %}
+<style>
+.contact{
+    text-align:center
+}
+</style>
+<h1 class="contact">Contactez-Moi</h1>
+<div>
+{{form(formulaire)}}
+</div>
 {% endblock %}
