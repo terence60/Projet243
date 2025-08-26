@@ -13,7 +13,11 @@ class ContactForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
+            ->add('email', TextareaType::class , [
+                'attr' => [
+                    'placeholder' => 'Saissisez votre email'
+                ]
+            ])
             ->add('message', TextareaType::class,[
                 'attr' => [
                 'placeholder' => 'Saisissez votre message'
