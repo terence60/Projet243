@@ -6,10 +6,12 @@ use App\Entity\Picture;
 use App\Form\PictureForm;
 use App\Repository\PictureRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 #[Route('/admin/picture')]
 final class PictureController extends AbstractController
@@ -30,6 +32,25 @@ final class PictureController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+                /** @var UploadedFile $file */
+        $file = $form->get('pictureFile')->getData();
+
+        if ($file) {
+            $newFilename = uniqid() . '.' . $file->guessExtension();
+
+            try {
+                $file->move(
+                    $this->getParameter('pictures_directory'),
+                    $newFilename
+                );
+            } catch (FileException $e) {
+                throw new \Exception('Erreur lors de l\'upload de l\'image.');
+            }
+
+            $picture->setPictureFile($newFilename);
+        } else {
+            throw new \Exception('Aucun fichier uploadé.');
+        }
             $entityManager->persist($picture);
             $entityManager->flush();
 

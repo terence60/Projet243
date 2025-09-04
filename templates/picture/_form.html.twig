@@ -1,4 +1,7 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.article) }}
+    {{ form_row(form.pictureFile) }}
+    <button class="btn">Save</button>
 {{ form_end(form) }}
+

@@ -20,6 +20,9 @@ class Picture
     #[ORM\JoinColumn(nullable: false)]
     private ?Article $article = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $pictureFile = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +48,18 @@ class Picture
     public function setArticle(Article $article): static
     {
         $this->article = $article;
+
+        return $this;
+    }
+
+    public function getPictureFile(): ?string
+    {
+        return $this->pictureFile;
+    }
+
+    public function setPictureFile(string $pictureFile): static
+    {
+        $this->pictureFile = $pictureFile;
 
         return $this;
     }
